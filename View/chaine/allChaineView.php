@@ -6,15 +6,27 @@
                 <td>Adresse</td>
                 <td>Code Postal</td>
                 <td>Ville</td>
+                <td>Supprimer</td>
             </tr>
         </thead>
         <tbody>
         <?php foreach($chaines as $chaineDTO){?>
             <tr>
-                <td><?= ucfirst($chaineDTO->getNom_chaine());?></td>
+                <td>
+                    <a href="index.php?controller=chaine&action=detail&id=<?=$chaineDTO->getChaine_id()?>"
+                       title="Afficher le détail">
+                        <?=ucfirst($chaineDTO->getNom_chaine())?>
+                    </a>
+                </td>
                 <td><?= $chaineDTO->getAdresse();?></td>
                 <td><?= $chaineDTO->getCode_postal();?></td>
                 <td><?= $chaineDTO->getVille();?></td>
+                <td>
+                    <a href="index.php?controller=chaine&action=delete&id=<?=$chaineDTO->getChaine_id()?>"
+                       title="Supprimer">
+                        X
+                    </a>
+                </td>
             </tr>
         <?php }?>
         </tbody>
@@ -26,11 +38,11 @@
         <fieldset>
             <legend>Nouvelle Chaine</legend>
             <input type="text" name="nom_chaine" placeholder="Nom de chaine" required="required">
-            <input type="text" name="adresse" placeholder="Adresse">
-            <input type="text" name="code_postal" placeholder="Code postal">
-            <input type="text" name="ville" placeholder="Ville">
-            <input type="number" name="telephone" placeholder="N° de tel">
-            <input type="number" name="fax" placeholder="N° de fax">
+            <input type="text" name="adresse" placeholder="Adresse" required="required">
+            <input type="text" name="code_postal" placeholder="Code postal" required="required">
+            <input type="text" name="ville" placeholder="Ville" required="required">
+            <input type="tel" name="telephone" placeholder="N° de tel" required="required">
+            <input type="tel" name="fax" placeholder="N° de fax" >
             <fieldset>
                 <legend>Chaine cablée ?</legend>
                 <label for="cable1">Oui</label>

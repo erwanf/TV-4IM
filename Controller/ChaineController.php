@@ -28,8 +28,8 @@ class ChaineController {
 
     public function detailAction(){
         if(isset($_GET['id'])){
-            $chaine = $this->chaineDAO->getOneChaine(intval($_GET['id']));
-            $this->view("chaine","oneChaine",array('chaine' => $chaine));
+            $chaineDTO = $this->chaineDAO->getOneChaine(intval($_GET['id']));
+            $this->view("chaine","oneChaine",array('chaineDTO' => $chaineDTO));
         }
         else{
             $this->showAllAction();
@@ -39,7 +39,22 @@ class ChaineController {
     public function insertAction(){
         $chaineDTO = new ChaineDTO();
         $chaineDTO->hydrate($_POST);
-        $this->chaineDAO->insert($chaineDTO);
+        $this->chaineDAO->addOrModify($chaineDTO);
+        $this->showAllAction();
+    }
+
+    public function updateAction(){
+        $chaineDTO = new ChaineDTO();
+        $chaineDTO->hydrate($_POST);
+        $chaineDTO->setChaine_id(intval($_GET['id']));
+        $this->chaineDAO->addOrModify($chaineDTO);
+        $this->showAllAction();
+    }
+
+    public function deleteAction(){
+        if(isset($_GET['id'])){
+            $this->chaineDAO->deletechaine(intval($_GET['id']));
+        }
         $this->showAllAction();
     }
 

@@ -50,7 +50,7 @@ class ChaineDTO {
      */
     public function setChaine_id($chaine_id)
     {
-        $this->chaine_id = $chaine_id;
+            $this->chaine_id = $chaine_id;
     }
 
     /**
@@ -66,7 +66,7 @@ class ChaineDTO {
      */
     public function setNom_chaine($nom_chaine)
     {
-        $this->nom_chaine = $nom_chaine;
+        $this->nom_chaine = substr(htmlspecialchars($nom_chaine),0,20);
     }
 
     /**
@@ -82,7 +82,7 @@ class ChaineDTO {
      */
     public function setAdresse($adresse)
     {
-        $this->adresse = $adresse;
+        $this->adresse = substr(htmlspecialchars($adresse),0,20);
     }
 
     /**
@@ -98,7 +98,7 @@ class ChaineDTO {
      */
     public function setCode_postal($code_postal)
     {
-        $this->code_postal = $code_postal;
+            $this->code_postal = substr($code_postal,0,5);
     }
 
     /**
@@ -114,7 +114,7 @@ class ChaineDTO {
      */
     public function setVille($ville)
     {
-        $this->ville = $ville;
+        $this->ville = substr(htmlspecialchars($ville),0,30);
     }
 
     /**
@@ -130,7 +130,7 @@ class ChaineDTO {
      */
     public function setTelephone($telephone)
     {
-        $this->telephone = $telephone;
+        $this->telephone = substr(htmlspecialchars($telephone),0,14);
     }
 
     /**
@@ -146,7 +146,7 @@ class ChaineDTO {
      */
     public function setFax($fax)
     {
-        $this->fax = $fax;
+        $this->fax = substr(htmlspecialchars($fax),0,14);
     }
 
     /**
@@ -162,7 +162,7 @@ class ChaineDTO {
      */
     public function setChaine_cablee($chaine_cablee)
     {
-        $this->chaine_cablee = $chaine_cablee;
+            $this->chaine_cablee = substr($chaine_cablee,0,1);
     }
 
 
